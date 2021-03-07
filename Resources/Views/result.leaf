@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>File uploaded</title>
+  </head>
+  <body>
+    <h1>File uploaded</h1>
+
+    #if(isImage):
+        <img src="#(fileUrl)" width="256px"><br><br>
+    #else:
+    <a href="#(fileUrl)" target="_blank">Show me!</a><br><br>
+    #endif
+    
+    <a href="/upload">Upload new one</a>
+  </body>
+</html>

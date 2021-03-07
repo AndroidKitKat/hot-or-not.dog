@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>#(title)</title>
+</head>
+
+<body>
+  <h1>Upload de picture pls</h1>
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file"><br><br>
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
