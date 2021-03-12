@@ -13,6 +13,10 @@ func routes(_ app: Application) throws {
         return req.view.render("upload", ["title": "Upload Picture"])
     }
     
+    app.get("debug") { req -> String in
+        return wtf()
+    }
+    
     app.post("upload") { req -> EventLoopFuture<String> in
         struct Input: Content {
             var file: File
