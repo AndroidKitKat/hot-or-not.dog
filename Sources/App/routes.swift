@@ -2,12 +2,9 @@ import Vapor
 
 func routes(_ app: Application) throws {
     app.get { req in
-        return req.view.render("index", ["title": "Hello Vapor!"])
+        return req.view.render("index", ["hotdogs": "0", "not_hotdogs": "0"])
     }
 
-    app.get("hello") { req -> String in
-        return "Hello, world!"
-    }
     
     app.get("upload") { req in
         return req.view.render("upload", ["title": "Upload Picture"])
@@ -24,7 +21,8 @@ func routes(_ app: Application) throws {
             throw Abort(.badRequest)
         }
         
-        let path = app.directory.publicDirectory + input.file.filename
+        let randomized = randomString(length: 10)
+        let path = app.directory.publicDirectory + "potential_hot_dogs/" + randomized + "_" + input.file.filename
         return req.application.fileio.openFile(path: path,
                                                mode: .write,
                                                flags: .allowFileCreation(posixMode: 0x744),
@@ -36,7 +34,7 @@ func routes(_ app: Application) throws {
                     .flatMapThrowing { _ in
                         try handle.close()
 //                        return path
-                        return is_hotdog(image: "Public/" + input.file.filename)
+                        return is_hotdog(image: path)
                     }
             }
     }
