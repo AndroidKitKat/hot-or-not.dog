@@ -1,0 +1,26 @@
+* {
+	background: red;
+	color: yellow;
+}
+
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+.main {
+	flex: 1;
+	text-align: center;
+}
+
+footer {
+	flex-shrink: 0;
+	text-align: center;
+	line-height: normal;
+	padding: 1rem;
+}
+
+#credits {
+	font-size: 0.8rem;
+}

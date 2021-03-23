@@ -8,4 +8,6 @@ db.sqlite
 .swiftpm
 
 opencv-swift
-Public
+Public/hot
+Public/not
+Public/processing
