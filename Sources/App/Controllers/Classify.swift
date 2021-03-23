@@ -5,6 +5,7 @@
 //  Created by skg on 3/11/21.
 //
 
+import Vapor
 import Foundation
 import CoreML
 import Vision
@@ -31,4 +32,10 @@ func randomString(length: Int) -> String {
     return String((0..<length).map{ _ in
         letters.randomElement()!
     })
+}
+
+func countFiles(path: String) -> Int {
+    let fileMan = FileManager.default
+    let dirContents = try? fileMan.contentsOfDirectory(atPath: path)
+    return dirContents?.count ?? 0
 }

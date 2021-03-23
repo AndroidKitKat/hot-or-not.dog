@@ -2,7 +2,7 @@ import Vapor
 
 func routes(_ app: Application) throws {
     app.get { req in
-        return req.view.render("index", ["hotdogs": "0", "not_hotdogs": "0"])
+        return req.view.render("index", ["hotdogs": countFiles(path: app.directory.publicDirectory + "hot/"), "not_hotdogs": countFiles(path: app.directory.publicDirectory + "not/")])
     }
 
     
@@ -22,7 +22,7 @@ func routes(_ app: Application) throws {
         }
         
         let randomized = randomString(length: 10)
-        let path = app.directory.publicDirectory + "potential_hot_dogs/" + randomized + "_" + input.file.filename
+        let path = app.directory.publicDirectory + "processing/" + randomized + "_" + input.file.filename
         return req.application.fileio.openFile(path: path,
                                                mode: .write,
                                                flags: .allowFileCreation(posixMode: 0x744),
