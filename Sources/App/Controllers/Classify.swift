@@ -20,8 +20,15 @@ let model = try! HotDogClassifier(
 func is_hotdog(image: String) -> String {
     do {
         let prediction = try model.prediction(input: HotDogClassifierInput(imageAt: URL.init(fileURLWithPath: image)))
-        return prediction.classLabel
+        return prediction.classLabel + " " + randomString(length: 10)
     } catch {
         return "something went wrong"
     }
+}
+
+func randomString(length: Int) -> String {
+    let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+    return String((0..<length).map{ _ in
+        letters.randomElement()!
+    })
 }

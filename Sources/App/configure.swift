@@ -7,6 +7,7 @@ public func configure(_ app: Application) throws {
     // app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
 
     app.routes.defaultMaxBodySize = "10mb"
+    app.http.server.configuration.port = 1337
     app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
     
     app.views.use(.leaf)
