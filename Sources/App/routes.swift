@@ -34,7 +34,7 @@ func routes(_ app: Application) throws {
                     .flatMapThrowing { _ in
                         try handle.close()
 //                        return path
-                        return is_hotdog(image: path)
+                        return isHotdog(path: path)
                     }
             }
     }
