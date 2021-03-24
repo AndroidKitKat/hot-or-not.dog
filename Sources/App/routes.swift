@@ -5,7 +5,7 @@ func routes(_ app: Application) throws {
         return req.view.render("index", ["hotdogs": countFiles(path: app.directory.publicDirectory + "hot/"), "not_hotdogs": countFiles(path: app.directory.publicDirectory + "not/")])
     }
     
-    app.post("classify") { req -> EventLoopFuture<ClassifiedResponse> in
+    app.post("classify") { req -> EventLoopFuture<View> in
         struct Input: Content {
             var file: File
         }
@@ -26,12 +26,16 @@ func routes(_ app: Application) throws {
                 req.application.fileio.write(fileHandle: handle,
                                              buffer: input.file.data,
                                              eventLoop: req.eventLoop)
-                    .flatMapThrowing { _ in
-                        try handle.close()
-                        let result = isHotDog(path: path)
-                        let response = ClassifiedResponse(request: ClassifiedData(result: result))
-                        return response
-                        
+                    .flatMap { _ in
+                        do {
+                            try handle.close()
+                        } catch {
+                        }
+//                        let result = isHotDog(path: path)
+//                        let response = ClassifiedResponse(request: ClassifiedData(result: result))
+//                        return response
+                        return req.view.render("classify")
+
 //                        return randomString(length: 10)
                     }
             }
