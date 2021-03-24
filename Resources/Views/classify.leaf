@@ -9,8 +9,15 @@
 
 <body>
   <div class="main">
-    <h1> #(result) </h1>
-    <img src="#(imageSource)">
+    <h1> #(result) <sup><div class="tooltip">(?)
+      <span class="tooltiptext">#(confidence)</span>
+    </div></sup></h1>
+    <br>
+    <img id="userPicture" src="#(imageSource)">
+    <br>
+    <a href="/">
+      <input type="submit" value="Try another!"/>
+    </a>
   </div>
   <footer>
     <span> I have been shown #(hotdogs) hotdogs and #(not_hotdogs) not hotdogs. </span>

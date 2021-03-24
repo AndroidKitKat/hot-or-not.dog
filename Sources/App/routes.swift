@@ -34,21 +34,24 @@ func routes(_ app: Application) throws {
                             try handle.close()
                         } catch {
                         }
-                        let (_, result, _, name) = isHotDog(path: path)
+                        let (_, result, confidence, name) = isHotDog(path: path)
                         // name the result
                         let fixedPath = fixPath(name)
                         var resultString: String
+                        var resultConfidence: String
                         switch result {
                         case "hot_dog":
                             resultString = "Hot Dog!"
+                            resultConfidence = String(format: "%.2f", (confidence["hot_dog"]! * 100)) + "%"
                             break
                         case "not_hot_dog":
                             resultString = "Not Hot Dog!"
+                            resultConfidence = String( format: "%.2f", (confidence["not_hot_dog"]!) * 100) + "%"
                             break
                         default:
                             resultString = "Something went wrong!"
+                            resultConfidence = String(confidence["hot_dog"] ?? 0 * 10000) + "%"
                         }
-                        
                         let hdogs = String(countFiles(path: app.directory.publicDirectory + "hot/"))
                         let nhdogs = String(countFiles(path: app.directory.publicDirectory + "not/"))
                         return req.view.render("classify",
@@ -56,7 +59,7 @@ func routes(_ app: Application) throws {
                                                 "imageSource": fixedPath,
                                                 "hotdogs": hdogs,
                                                 "not_hotdogs": nhdogs,
-
+                                                "confidence": resultConfidence,
                         ])
                     }
             }
@@ -71,12 +74,8 @@ struct ClassifiedData: Content {
 }
 
 func fixPath(_ path: String) -> String {
-    print(path)
     var separatedPath = path.components(separatedBy: "/")
-    print(separatedPath)
     separatedPath.removeFirst(1)
-    print(separatedPath)
     let newPath = separatedPath.joined(separator: "/")
-    print(newPath)
     return "/" + newPath
 }
