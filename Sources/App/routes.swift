@@ -10,17 +10,17 @@ func routes(_ app: Application) throws {
         return req.view.render("upload", ["title": "Upload Picture"])
     }
     
-    app.post("upload") { req -> EventLoopFuture<String> in
+    app.post("upload") { req -> EventLoopFuture<View> in
         struct Input: Content {
             var file: File
         }
-        
+
         let input = try req.content.decode(Input.self)
-        
+
         guard input.file.data.readableBytes > 0 else {
             throw Abort(.badRequest)
         }
-        
+
         let randomized = randomString(length: 10)
         let path = app.directory.publicDirectory + "processing/" + randomized + "_" + input.file.filename
         return req.application.fileio.openFile(path: path,
@@ -34,7 +34,9 @@ func routes(_ app: Application) throws {
                     .flatMapThrowing { _ in
                         try handle.close()
 //                        return path
-                        return isHotdog(path: path)
+                        return req.view.render("result", [
+                            "result": "test"
+                        ])
                     }
             }
     }

@@ -18,7 +18,7 @@ let model = try! HotDogClassifier(
                                   configuration: MLModelConfiguration())
 
 
-func isHotdog(path: String) -> String {
+func isHotDog(path: String) -> String {
     let fileManager = FileManager.default
     let image = URL.init(fileURLWithPath: path)
     do {
