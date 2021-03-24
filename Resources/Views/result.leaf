@@ -1,19 +1,27 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>File uploaded</title>
-  </head>
-  <body>
-    <h1>File uploaded</h1>
+<!doctype html>
+<html lang="en">
 
-    #if(isImage):
-        <img src="#(fileUrl)" width="256px"><br><br>
-    #else:
-    <a href="#(fileUrl)" target="_blank">Show me!</a><br><br>
-    #endif
-    
-    <a href="/upload">Upload new one</a>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <title>#(result)</title>
+  <link href="/assets/css/stylesheet.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="main">
+    <h1> #(result) </h1>
+  </div>
+  <footer>
+    <span> I have been shown #(hotdogs) hotdogs and #(not_hotdogs) not hotdogs. </span>
+    <br>
+    <span id="credits"> Built using 
+      <a href="https://developer.apple.com/xcode/">Xcode</a>, 
+      <a href="https://www.macstadium.com">MacStadium</a>, 
+      <a href="https://vapor.codes">Vapor</a>, 
+      and <a href="https://swift.org">Swift</a>. 
+      <a href="https://github.com/AndroidKitKat/hot-or-not.dog/">Source</a>.
+    </span>
+  </footer>
+</body>
+
 </html>

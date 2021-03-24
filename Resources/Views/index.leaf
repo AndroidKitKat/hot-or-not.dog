@@ -3,13 +3,13 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Not Not Hotdog?</title>
+  <title>Hot or Not Dog</title>
   <link href="/assets/css/stylesheet.css" rel="stylesheet">
 </head>
 
 <body>
   <div class="main">
-    <h1> Not Not Hotdog </h1>
+    <h1> Hot or Not Dog </h1>
     <form action="/upload" method="post" enctype="multipart/form-data">
       <input type="file" name="file" accept="image/*"><br><br>
       <input type="submit" value="Submit">
@@ -23,7 +23,7 @@
       <a href="https://www.macstadium.com">MacStadium</a>, 
       <a href="https://vapor.codes">Vapor</a>, 
       and <a href="https://swift.org">Swift</a>. 
-      <a href="https://github.com/AndroidKitKat/not-not-hotdog/">Source</a>.
+      <a href="https://github.com/AndroidKitKat/hot-or-not.dog/">Source</a>.
     </span>
   </footer>
 </body>
