@@ -51,7 +51,7 @@ func routes(_ app: Application) throws {
                         
                         let hdogs = String(countFiles(path: app.directory.publicDirectory + "hot/"))
                         let nhdogs = String(countFiles(path: app.directory.publicDirectory + "not/"))
-                        return req.view.render("result",
+                        return req.view.render("classify",
                                                ["result": resultString,
                                                 "imageSource": fixedPath,
                                                 "hotdogs": hdogs,
