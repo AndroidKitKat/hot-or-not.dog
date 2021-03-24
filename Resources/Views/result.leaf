@@ -10,6 +10,7 @@
 <body>
   <div class="main">
     <h1> #(result) </h1>
+    <img src="#(imageSource)">
   </div>
   <footer>
     <span> I have been shown #(hotdogs) hotdogs and #(not_hotdogs) not hotdogs. </span>

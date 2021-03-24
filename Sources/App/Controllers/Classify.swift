@@ -1,6 +1,6 @@
 //
 //  Classify.swift
-//  
+//
 //
 //  Created by skg on 3/11/21.
 //
@@ -17,8 +17,7 @@ let model = try! HotDogClassifier(
     contentsOf: URL.init(fileURLWithPath: "Sources/App/HotDogClassifier.mlmodelc"),
                                   configuration: MLModelConfiguration())
 
-
-func isHotDog(path: String) -> String {
+func isHotDog(path: String) -> (status: Int, result: String, probability: [String : Double], destination: String) {
     let fileManager = FileManager.default
     let image = URL.init(fileURLWithPath: path)
     do {
@@ -39,11 +38,12 @@ func isHotDog(path: String) -> String {
         do {
             try fileManager.moveItem(at: image, to: URL.init(fileURLWithPath: destination))
         } catch {
-            return "File IO error"
+            return (1, "File IO error", ["hot_dog": 0.00, "not_hot_dog": 0.00], destination)
         }
-        return prediction.classLabel
+        // main return
+        return (0, prediction.classLabel, prediction.classLabelProbs, destination)
     } catch {
-        return "something went wrong"
+        return (1, "Error in Classification", ["hot_dog": 0.00, "not_hot_dog": 0.00], "/dev/null")
     }
 }
 
@@ -59,3 +59,4 @@ func countFiles(path: String) -> Int {
     let dirContents = try? fileMan.contentsOfDirectory(atPath: path)
     return dirContents?.count ?? 0
 }
+
