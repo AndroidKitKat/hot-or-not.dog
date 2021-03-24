@@ -4,13 +4,8 @@ func routes(_ app: Application) throws {
     app.get { req in
         return req.view.render("index", ["hotdogs": countFiles(path: app.directory.publicDirectory + "hot/"), "not_hotdogs": countFiles(path: app.directory.publicDirectory + "not/")])
     }
-
     
-    app.get("upload") { req in
-        return req.view.render("upload", ["title": "Upload Picture"])
-    }
-    
-    app.post("upload") { req -> EventLoopFuture<View> in
+    app.post("classify") { req -> EventLoopFuture<ClassifiedResponse> in
         struct Input: Content {
             var file: File
         }
@@ -33,11 +28,20 @@ func routes(_ app: Application) throws {
                                              eventLoop: req.eventLoop)
                     .flatMapThrowing { _ in
                         try handle.close()
-//                        return path
-                        return req.view.render("result", [
-                            "result": "test"
-                        ])
+                        let result = isHotDog(path: path)
+                        let response = ClassifiedResponse(request: ClassifiedData(result: result))
+                        return response
+                        
+//                        return randomString(length: 10)
                     }
             }
     }
+}
+
+struct ClassifiedData: Content {
+    let result: String
+}
+
+struct ClassifiedResponse: Content {
+    let request: ClassifiedData
 }

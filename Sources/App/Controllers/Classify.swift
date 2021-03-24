@@ -41,7 +41,7 @@ func isHotDog(path: String) -> String {
         } catch {
             return "File IO error"
         }
-        return prediction.classLabel + " " + randomString(length: 10)
+        return prediction.classLabel
     } catch {
         return "something went wrong"
     }
