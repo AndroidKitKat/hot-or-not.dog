@@ -12,7 +12,6 @@
     <h1> #(result)<sup><div class="tooltip">(?)
       <span class="tooltiptext">#(confidence) confident</span>
     </div></sup></h1>
-    <br>
     <img id="userPicture" src="#(imageSource)">
     <br>
     <br>
@@ -27,6 +26,7 @@
       <a href="https://developer.apple.com/xcode/">Xcode</a>,
       <a href="https://www.macstadium.com">MacStadium</a>,
       <a href="https://vapor.codes">Vapor</a>,
+      <a href="https://https://developer.apple.com/machine-learning/core-ml/">CoreML</a>,
       and <a href="https://swift.org">Swift</a>.
       <a href="https://github.com/AndroidKitKat/hot-or-not.dog/">Source</a>.
     </span>

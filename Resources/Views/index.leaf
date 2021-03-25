@@ -10,7 +10,7 @@
 <body>
   <div class="main">
     <h1> Hot or Not Dog </h1>
-    <form action="/classify" method="post" enctype="multipart/form-data">
+    <form action="/classify" method="POST" enctype="multipart/form-data">
       <input type="file" name="file" accept="image/*"><br><br>
       <input type="submit" value="Submit">
     </form>
@@ -18,11 +18,12 @@
   <footer>
     <span> I have been shown #(hotdogs) hotdogs and #(not_hotdogs) not hotdogs. </span>
     <br>
-    <span id="credits"> Built using 
-      <a href="https://developer.apple.com/xcode/">Xcode</a>, 
-      <a href="https://www.macstadium.com">MacStadium</a>, 
-      <a href="https://vapor.codes">Vapor</a>, 
-      and <a href="https://swift.org">Swift</a>. 
+    <span id="credits"> Built using
+      <a href="https://developer.apple.com/xcode/">Xcode</a>,
+      <a href="https://www.macstadium.com">MacStadium</a>,
+      <a href="https://vapor.codes">Vapor</a>,
+      <a href="https://https://developer.apple.com/machine-learning/core-ml/">CoreML</a>,
+      and <a href="https://swift.org">Swift</a>.
       <a href="https://github.com/AndroidKitKat/hot-or-not.dog/">Source</a>.
     </span>
   </footer>
